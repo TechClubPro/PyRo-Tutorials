@@ -9,7 +9,7 @@ IO Pin 1 is configured to Digital Input, to read Digital values from sensor
 IO Pin 2 is configured to Digital Input, to read Digital values from sensor
 
 """
-import phygital_v2 as phy
+from Phygital_v0 import Phygital_v0 as phy
 from time import sleep as s
 import pygame
 import rotateImage as rotator
@@ -39,8 +39,8 @@ newimg=pygame.transform.scale(img,(400,400))
         
 screen.blit(newimg,(60,60))
 
-phy.pinMode(1,"dinput")
-phy.pinMode(2,"dinput")
+phy.pinMode("A0","dinput")
+phy.pinMode("A1","dinput")
 phy.init("COM13")
 
 while True:
@@ -55,11 +55,11 @@ while True:
                 break
             
         
-        data1=phy.dRead(1)
-        data2=phy.dRead(2)
-        if data1 == 1:
+        data1=phy.dRead('A0')
+        data2=phy.dRead('A1')
+        if data1 == 0:
             
-            while data2==0:
+            while data2==1:
                 print("In While")
                 data2=phy.dRead(2)
             screenImg = pygame.image.load("Images/background.jpg")
@@ -77,8 +77,8 @@ while True:
                 print("in For")
                 s(0.1)
             
-        elif data2==1:
-            while data1==0:
+        elif data2==0:
+            while data1==1:
                 data1=phy.dRead(1)
             screenImg = pygame.image.load("Images/background.jpg")
             screen.blit(screenImg,(0,0)) 
