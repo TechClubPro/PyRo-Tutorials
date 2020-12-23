@@ -61,7 +61,7 @@ while True:
             
             while data2==1:
                 print("In While")
-                data2=phy.dRead(2)
+                data2=phy.dRead("A1")
             screenImg = pygame.image.load("Images/background.jpg")
             screen.blit(screenImg,(0,0)) 
         
@@ -79,7 +79,7 @@ while True:
             
         elif data2==0:
             while data1==1:
-                data1=phy.dRead(1)
+                data1=phy.dRead("A0")
             screenImg = pygame.image.load("Images/background.jpg")
             screen.blit(screenImg,(0,0)) 
         
